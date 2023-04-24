@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-icon (click)="dismiss()" size="large" slot="start" name="close"></ion-icon>
+    <ion-title>Atualizar Tarefa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-card>
+    <ion-item>
+      <ion-label>Nome</ion-label>
+      <ion-textarea aria-placeholder="Informe a tarefa"
+       [(ngModel)]="minhaTarefa.nome"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Prioridade</ion-label>
+      <ion-select [(ngModel)]= "minhaTarefa.prioridade"
+      value="baixo" multiple="false" placeholder="Select">
+        <ion-select-option value="baixo">Baixo</ion-select-option>
+        <ion-select-option value="medio">Médio</ion-select-option>
+        <ion-select-option value="alto">Alto</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon slot="start" name="calendar-outline"></ion-icon>
+      <ion-label>Data limite</ion-label>
+
+        <ion-datetime presentation="date" [(ngModel)]="dataSelecionada"></ion-datetime>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-icon slot="start" name="pricetag-outline"></ion-icon>
+      <ion-label>Categoria</ion-label>
+        <ion-input type="text" [ngModel]="categoriaSelecionada"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-chip (click)="selecionarCategoria(i)" *ngFor="let tag of categorias; let i=index">
+        <ion-label>{{tag}}</ion-label>
+      </ion-chip>
+    </ion-item>
+
+    <ion-button (click)="editar()" expand="block" shape="round">
+      <ion-icon slot="start" name="save"></ion-icon>
+      Salvar
+    </ion-button>
+
+
+  </ion-card>
+
+ 
+
+</ion-content>
